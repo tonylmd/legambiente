@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us">
+    <head>
+        <title>Mappa del rischio climatico nelle città italiane</title>
+        <meta name="author" content="Teamdev S.R.L." />
+        <meta name="keywords" content="Legambiente, Coste Italiane" />
+        <meta name="description" content="Cliccando sulla foto dello stivale si può navigare attraverso 7.458 chilometri di coste italiane, con immagini, storie, informazioni sui luoghi, che si andranno arricchendo nel tempo grazie alle foto che ognuno di voi vorrà inviare e al contributo di fotografi professionisti, di studi e ricerche. Vuoi contribuire all'Atlante delle Coste?" />
+
+        <!--Facebook Open Graph-->
+        <meta property="og:title" content="Mappa del rischio climatico nelle città italiane" />
+        <meta property="og:type" content="" />
+        <meta property="og:url" content="" />
+        <meta property="og:image" content="" />
+        <meta property="og:site_name" content="" />
+        <meta property="og:description" content="Cliccando sulla foto dello stivale si può navigare attraverso 7.458 chilometri di coste italiane, con immagini, storie, informazioni sui luoghi, che si andranno arricchendo nel tempo grazie alle foto che ognuno di voi vorrà inviare e al contributo di fotografi professionisti, di studi e ricerche. Vuoi contribuire all'Atlante delle Coste?" />
+        <meta property="fb:app_id" content="" />
+        <!--End Facebook-->
+        <!--Twitter Card Data-->
+        <meta name="twitter:card" content="" />
+        <meta name="twitter:site" content="" />
+        <meta name="twitter:url" content="" />
+        <meta name="twitter:title" content="Mappa del rischio climatico nelle città italiane" />
+        <meta name="twitter:description" content="Cliccando sulla foto dello stivale si può navigare attraverso 7.458 chilometri di coste italiane, con immagini, storie, informazioni sui luoghi, che si andranno arricchendo nel tempo grazie alle foto che ognuno di voi vorrà inviare e al contributo di fotografi professionisti, di studi e ricerche. Vuoi contribuire all'Atlante delle Coste?" />
+        <meta name="twitter:image" content="" />
+        <!--Twitter Card Data-->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=7, IE=9" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <link type="image/ico" rel="shortcut icon" href="resources/images/favicon.ico" />
+        <link type="image/ico" rel="icon" href="resources/images/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="http://js.arcgis.com/3.8/js/esri/css/esri.css" />
+        <link rel="stylesheet" type="text/css" href="http://js.arcgis.com/3.8/js/dojo/dijit/themes/claro/claro.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+        <script type="text/javascript" src="lib/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="lib/linq.min.js"></script>
+        <script type="text/javascript" src="lib/iscroll.js"></script>
+        <script type="text/javascript">var djConfig = {parseOnLoad: true};</script>
+        <script type="text/javascript" src="app/utils/helper_functions.js"></script>
+        <!--<script type="text/javascript" src="lib/linq.min.js"></script>-->
+        <!--Social Media Links-->
+        <script type="text/javascript">var switchTo5x=true;</script>
+        <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+        <script type="text/javascript">stLight.options({publisher:'77225c91-2742-42f7-b1b4-bddda99a9bde'});</script>
+        <!--END Social Media Links-->
+        <!--Google Analytics Start-->
+        <!--Google Analytics End-->
+        <script type="text/javascript">
+            var dojoConfig = {
+                parseOnLoad: true,
+                isDebug: false,
+                packages: [
+                {
+                    name: 'storymaps',
+                    location: location.pathname.replace(/\/[^/]+$/, '/') + 'app'
+                },
+                {
+                    name: 'root',
+                    location: location.pathname.replace(/\/[^/]+$/, '/')
+                }		
+                ]
+            };
+        </script>
+        <script>
+            $(function() {
+                 myH = $("#legendInMap ul").height();
+                 $("#legendInMap ul").css('height','0');
+                 $( "#legendInMap" ).click(function(e){
+                     if($("#legendInMap ul").height() == 0){
+                         $("#legendInMap ul").animate({ height: myH +320, paddingTop:'10px'},'fast');
+                     }else{
+                         $("#legendInMap ul").animate({ height: 0, paddingTop:'0px'},'fast');
+                     }
+                 });
+             });
+        </script>
+        <script type="text/javascript" src="http://js.arcgis.com/3.8/"></script>
+        <script type="text/javascript" src="config.js"></script>
+        <script type="text/javascript" src="app/utils/IconSpecs.js"></script>
+        <script type="text/javascript" src="app/main.js"></script>
+    </head>
+    <body class="claro">
+
+        <!-- Header Section-->
+        <div id="header">
+            <div id="headerLogo">
+                <img alt="Logo Legambiente" src="resources/images/logo.png" />
+            </div>
+            <div id="headerText">
+                <h1 id="title"></h1>
+                <h2 id="subtitle"></h2>
+            </div>
+            <div id="creditsArea">
+                <a href="http://www.legambiente.it/" target="_blank">
+                    <img src="resources/images/legambiente.png" alt="Legambiente" title="Legambiente" />
+                </a>
+                 <a href="http://www.iuav.it/" target="_blank">
+                    <img class="iuav" src="resources/images/logo_IUAV.png" alt="Università IUAV di Venezia" title="Università IUAV di Venezia" />
+                </a> 
+                <a href="http://www.teamdev.it/" target="_blank">
+                    <img class="end" src="resources/images/teamdev.gif" alt="Teamdev" title="Teamdev" />
+                </a>
+            </div>
+        </div>
+        <div id="headerSocial">
+            <div id="socialArea">
+                <!--<span class="title">Condividi</span>-->
+                <div id="social">
+                    <span class="st_facebook_large" displaytext="Facebook"></span>
+                    <span class="st_twitter_large" displaytext="Twitter" st_via="EsriStoryMaps"></span>
+                    <span class="st_googleplus_large" displaytext="Google +"></span>
+                    <span class="st_sharethis_large" displaytext="Share This!"></span>
+                </div>
+                <!--<div id="logo"><a id="logoLink" href="http://www.esri.com" target="_blank"><img id="logoImg" src="resources/images/esriGlobeLogow.png" alt="Esri - Home" /></a></div>-->
+            </div>
+        </div>
+
+        <div id="leftPane">
+            <div id="case">
+                <div id="table">
+                    <div id="topRow">
+                        <div class="numberDiv" style="font-size:16px"><img src="resources/images/PointerUp.png" style="margin-top:10px" /></div>
+                        <div style="top:0px;left:40px;position:absolute;overflow:hidden">
+                            <div id="homeBox" style="float:left;width:35px;height:40px;margin-left:5px">
+                                <img id="iconHome" src="resources/images/Home.png" style="margin-top:2px;cursor:pointer" />
+                            </div>
+                            <div style="width:40px;height:40px;float:left;position:relative">
+                                <img id="iconLeft" style="position:absolute;cursor:pointer;top:4px;left:14px;display:none" src="resources/images/pointer.png" />
+                                <img id="iconList" style="position:absolute;display:none" src="resources/images/ListIcon.png" />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="wrapper">
+                        <ul id="thelist"></ul>
+                    </div>
+                    <div id="bottomRow">
+                        <div class="numberDiv" style="font-size:16px"><img src="resources/images/PointerDown.png" style="margin-top:15px" /></div>
+                    </div>
+                </div>
+                <div id="blot">
+                    <div id="inner">
+                        <div data-dojo-type="dijit/Dialog" data-dojo-id="myDialog" title="Tutti i dettagli">
+                            <div id="dijitDialogPaneContentArea">
+                            </div>
+                        </div>
+                        <div id="info"></div>
+                        <div id="mapOV">
+                            <div id="hoverInfo"></div>
+                            
+                             
+                            
+                            <div id="legendInMap">
+                                <span>Legenda</span>
+                                <ul style="height: 0px;">
+                                    <li><img alt="Allagamenti da piogge intense" title="Allagamenti da piogge intense" src="resources/MIcons/type1.png"><span class="label">Allagamenti</span></li>
+                                    <li><img alt="Danni al patrimonio archeologico da piogge intense" title="Danni al patrimonio archeologico da piogge intense" src="resources/MIcons/type2.png"><span class="label">Danni archeologico</span></li>
+                                    <li><img alt="Danni alle infrastrutture da piogge intense" title="Danni alle infrastrutture da piogge intense" src="resources/MIcons/type3.png"><span class="label">Danni infrastrutture</span></li>
+                                    <li><img alt="Danni da trombe d'aria" title="Danni da trombe d'aria" src="resources/MIcons/type4.png"><span class="label">Danni da trombe d'aria</span></li>
+                                    <li><img alt="Esondazioni fluviali" title="Esondazioni fluviali" src="resources/MIcons/type5.png"><span class="label">Esondazioni</span></li>
+                                    <li><img alt="frane da piogge intense" title="frane da piogge intense" src="resources/MIcons/type6.png"><span class="label">Frane</span></li>
+                                    <li><img alt="Temperature estreme in citta" title="Temperature estreme in citta" src="resources/MIcons/type7.png"><span class="label">Temperature estreme</span></li>
+                                </ul>
+                            </div>
+                        
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div id="intro">
+                    <div id="innerIntro">
+                        <img alt="container" src="resources/images/logo_big.png" style="padding-left:0px;max-width:300px;" />
+                        <h2>Mappa del rischio climatico nelle città italiane</h2>
+                        <div id="description"></div>
+                        <br />
+                        <a href="javascript:changeState(STATE_TABLE)" class="visualizza-tutti">Visualizza tutti i luoghi</a>
+                        <br /><br />
+                    </div>
+                </div>
+
+            </div>
+            <img id="flipper" alt="Swap maps" title="Swap maps" src="resources/images/Flip2.png" style="cursor:pointer;position:absolute;z-index:949;left:100%;max-width:50px;margin-left:-25px;display:none" />
+
+        </div>
+        <div id="map"></div><!--mapPane-->
+        <div id="whiteOut" style="position:absolute;width:100%;height:100%;background-color:#FFF;z-index:2000;top:0px">
+            <img id="loader" src="resources/images/loader.gif" style="position:absolute;top:50%;left:50%;margin-top:-40px;margin-left:-40px" />
+        </div>
+    </body>
+</html>
